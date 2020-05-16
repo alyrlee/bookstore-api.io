@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import './FilterableList.css';
-import ListItem from '../ListItem/ListItem';
+import Book from './Book';
 
 class FilterableList extends Component {
   render() {
-    const { searchTerm, filterOption } = this.props;
-    const list = this.props.files
-        .filter(file => file.name.includes(searchTerm)
-              && (filterOption === 'All' || file.status === filterOption))
-        .map((file, key) => <ListItem {...file} key={key} />);
+    const { bookResults } = this.props;
+    const list = bookResults.items
+    .map(( book, index ) => <book 
+                                book={ book } 
+                                key={ index } />); 
     return (
       <div className="FilterableList">
+      <ul>
         {list}
+      </ul>  
       </div>
     );
   }
 }
 
 FilterableList.defaultProps = {
-  files: []
+  Book: []
 };
 
 
