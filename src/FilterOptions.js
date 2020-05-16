@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './FilterOptions.css';
+// import './FilterOptions.css';
 
 class FilterOptions extends Component {
-  render() {
+  render(props) {
     const { handlePrintType, handleBookType } = props;
     return (
         <div className="filter_bar_container">
@@ -60,3 +60,5 @@ class FilterOptions extends Component {
     );
 }
 }
+
+export default FilterOptions;

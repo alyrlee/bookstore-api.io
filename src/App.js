@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import FilterableList from './FilterableList';
 import Book from './Book'; 
-import Header from './Header';
+// import Header from './Header';
 
 class App extends Component {
 
@@ -62,7 +62,7 @@ class App extends Component {
 
     return (
         <div className="App">
-          { page }
+          { Book }
         </div>
       );
     }
