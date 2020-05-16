@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 
-// import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 import FilterableList from './FilterableList';
-import Book from './Book'; 
-// import Header from './Header';
+import Header from './Header';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      bookResults: this.props.starterBookResults,
+      bookFilter: '', 
+      printFilter: '',
       Book: [],
       showAddForm: false
     };
@@ -42,7 +44,7 @@ class App extends Component {
         }
         return res;
       })
-   .then(res=> res.jscon())
+   .then(res=> res.json())
    .then(data => {
       this.setState({
         book: data,
@@ -57,12 +59,34 @@ class App extends Component {
 
   }
 
-  render () {
-    // 
+  handlePrintType = ( printTypeFormEvent ) => {
+    if ( printTypeFormEvent ) {
+      this.setState({
+          printFilter: printTypeFormEvent
+      });
+    } 
+  }
+
+  handleBookType = ( bookTypeFormEvent ) => {
+    if ( bookTypeFormEvent ) {
+      this.setState({
+          bookFilter: bookTypeFormEvent
+      });
+    } 
+  }
+
+
+  render() {
+    const { bookResults } = this.state; 
+ 
 
     return (
-        <div className="App">
-          { Book }
+        <div >
+        <Header />
+        <SearchBar 
+          handleSearchSubmit={ this.handleSearchSubmit }/>
+        <FilterableList
+          bookResults={ bookResults } />
         </div>
       );
     }

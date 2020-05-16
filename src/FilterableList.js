@@ -6,7 +6,7 @@ class FilterableList extends Component {
   render() {
     const { bookResults } = this.props;
     const list = bookResults.items
-    .map(( book, index ) => <book 
+    .map(( book, index ) => <Book 
                                 book={ book } 
                                 key={ index } />); 
     return (

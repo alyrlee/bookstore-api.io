@@ -4,6 +4,15 @@ import SearchBox from './SearchBox';
 import FilterOptions from './FilterOptions';
 
 class SearchBar extends Component {
+  state = {
+    searchInput: ''
+}
+
+handleSearchInput = ( searchEvent ) => {
+    this.setState({
+      searchInput: searchEvent.target.value
+    });
+}
   render() {
     return (
       <div className="SearchBar">
