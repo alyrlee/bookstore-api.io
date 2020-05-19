@@ -6,18 +6,18 @@ class FilterableList extends Component {
   render() {
     
 //.map((bookmark, i) => <Bookmark { ...bookmark } key={i}/>);
-     const list  = this
+     const book  = this
       .props
-      .list
-      .map((list, i ) => 
+      .book
+      .map((book, i ) => 
  
       <Book 
-         { ...list} key={i}/>);
+         { ...book} key={i}/>);
 
     return (
       <div className="FilterableList">
       <ul>
-        {list}
+        {book}
       </ul>  
       </div>
     );
