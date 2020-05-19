@@ -4,11 +4,16 @@ import Book from './Book';
 
 class FilterableList extends Component {
   render() {
-    const { bookResults } = this.props;
-    const list = bookResults.items
-    .map(( book, index ) => <Book 
-                                book={ book } 
-                                key={ index } />); 
+    
+//.map((bookmark, i) => <Bookmark { ...bookmark } key={i}/>);
+     const list  = this
+      .props
+      .book
+      .map(( book, i ) => 
+ 
+      <Book 
+         { ...book} key={i}/>);
+
     return (
       <div className="FilterableList">
       <ul>

@@ -4,6 +4,7 @@ import './App.css';
 import SearchBar from './SearchBar';
 import FilterableList from './FilterableList';
 import Header from './Header';
+import FilterOptions from './FilterOptions';
 
 class App extends Component {
 
@@ -85,6 +86,7 @@ class App extends Component {
         <Header />
         <SearchBar 
           handleSearchSubmit={ this.handleSearchSubmit }/>
+          {FilterOptions}
         <FilterableList
           bookResults={ bookResults } />
         </div>

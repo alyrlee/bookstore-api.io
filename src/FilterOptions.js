@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 // import './FilterOptions.css';
 
 class FilterOptions extends Component {
-  render(props) {
-    const { handlePrintType, handleBookType } = props;
+
+
+  render() {
     return (
         <div className="filter_bar_container">
+            <form >
             <label>Print Type:</label>
-            <form 
-                action="" 
-                className="print_type_filter_form"
-                onChange={ e => handlePrintType( e.target.value ) }>
                 <select 
                     name="print-type-filter">
                     <option 
@@ -27,11 +25,9 @@ class FilterOptions extends Component {
                     </option>
                 </select>
             </form>
-            <label>Book Type:</label> 
-            <form 
-                action="" 
-                className="book_type_filter_form"
-                onChange={ e => handleBookType( e.target.value ) }>
+    
+            <form> 
+               <label>Book Type:</label> 
                 <select 
                     name="book-type-filter">
                     <option 

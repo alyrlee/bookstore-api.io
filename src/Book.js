@@ -4,8 +4,8 @@ import './Book.css';
 class Book extends Component {
    render() {
       const { book } = this.props;
-  
 
+     
       let title;
       let author;
       let thumbnailUrl;
