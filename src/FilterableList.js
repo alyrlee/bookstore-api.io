@@ -8,11 +8,11 @@ class FilterableList extends Component {
 //.map((bookmark, i) => <Bookmark { ...bookmark } key={i}/>);
      const list  = this
       .props
-      .book
-      .map(( book, i ) => 
+      .list
+      .map((list, i ) => 
  
       <Book 
-         { ...book} key={i}/>);
+         { ...list} key={i}/>);
 
     return (
       <div className="FilterableList">
