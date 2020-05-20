@@ -4,24 +4,23 @@ import Book from './Book';
 
 class FilterableList extends Component {
   render() {
-    
-//.map((bookmark, i) => <Bookmark { ...bookmark } key={i}/>);
-     const book  = this
-      .props
-      .book
-      .map((book, i ) => 
- 
-      <Book 
-         { ...book} key={i}/>);
-
-    return (
-      <div className="FilterableList">
+    const bookInfo = this.props.filterBookInfo.map((info, i) => (
+      <Book
+        key={i}
+        title={info.volumeInfo.title}
+        book_author={author.props}
+        book_cost= {cost.props}
+        book_snippet={ snippet.props }
+        />
+    ));
+return (
+  <div className="FilterableList">
       <ul>
-        {book}
+        {bookInfo}
       </ul>  
       </div>
-    );
-  }
+ );      
+}
 }
 
 FilterableList.defaultProps = {
