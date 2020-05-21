@@ -2,31 +2,33 @@ import React, { Component } from 'react';
 import './FilterableList.css';
 import Book from './Book';
 
-class FilterableList extends Component {
+export default class FilterableList extends Component {
   render() {
     const bookInfo = this.props.filterBookInfo.map((info, i) => (
       <Book
         key={i}
         title={info.volumeInfo.title}
-        book_author={"authors" in info.volumeInfo}
-        book_cost= {"cost" in info.volumeInfo}
-        book_snippet={ "snippet" in info.volumeInfo.textSnippet}
-        />
+        image={
+          "imageLinks" in info.volumeInfo
+            ? info.volumeInfo.imageLinks.thumbnail
+            : ""
+        }
+        author={
+          "authors" in info.volumeInfo
+            ? `Author(s): ` + info.volumeInfo.authors 
+            : ""
+        }
+        price={
+          "listPrice" in info.saleInfo
+            ? `Price: $` + info.saleInfo.listPrice.amount
+            : ""
+          //info.saleInfo.saleability
+        }
+        description={info.volumeInfo.description}
+        preview={info.volumeInfo.previewLink}
+      />
     ));
-    
-return (
-  <div className="FilterableList">
-      <ul>
-        {bookInfo}
-      </ul>  
-      </div>
- );      
+    console.log(bookInfo, "FilterableList results");
+    return <div className="FilterableList">{bookInfo}</div>;
+  }
 }
-}
-
-FilterableList.defaultProps = {
-  Book: []
-};
-
-
-export default FilterableList;
