@@ -8,11 +8,12 @@ class FilterableList extends Component {
       <Book
         key={i}
         title={info.volumeInfo.title}
-        book_author={author.props}
-        book_cost= {cost.props}
-        book_snippet={ snippet.props }
+        book_author={"authors" in info.volumeInfo}
+        book_cost= {"cost" in info.volumeInfo}
+        book_snippet={ "snippet" in info.volumeInfo.textSnippet}
         />
     ));
+    
 return (
   <div className="FilterableList">
       <ul>
