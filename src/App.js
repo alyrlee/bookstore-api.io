@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 import SearchBar from './SearchBar';
-import FilterableList from './FilterableList';
+// import FilterableList from './FilterableList';
 import Header from './Header';
-import FilterOptions from './FilterOptions';
+// import FilterOptions from './FilterOptions';
 
 class App extends Component {
 
@@ -33,7 +33,7 @@ class App extends Component {
     const options = {
       method: 'GET',
       headers: {
-      "Authorization": "AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM",
+      "Authorization": "Bearer AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM",
       "Content-Type": "application/json"
       }
     }; 
@@ -57,7 +57,6 @@ class App extends Component {
          error: err.message
       });
    });
-
   }
 
   handlePrintType = ( printTypeFormEvent ) => {
@@ -78,7 +77,10 @@ class App extends Component {
 
 
   render() {
-    const { bookResults } = this.state; 
+    // const book = this.state.showAddForm
+    // ? <bookResults />
+    // : <FilterableList bookResults={this.state.FilterableList}/>; 
+    // // const { bookResults } = this.state; 
  
 
     return (
@@ -86,9 +88,9 @@ class App extends Component {
         <Header />
         <SearchBar 
           handleSearchSubmit={ this.handleSearchSubmit }/>
-          {FilterOptions}
-        <FilterableList
-          bookResults={ bookResults } />
+          {/* {FilterOptions} */}
+        {/* <FilterableList
+          bookResults={ bookResults } /> */}
         </div>
       );
     }

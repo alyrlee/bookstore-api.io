@@ -4,31 +4,37 @@ import Book from './Book';
 
 export default class FilterableList extends Component {
   render() {
-    const bookInfo = this.props.filterBookInfo.map((info, i) => (
+    const {book.volumeInfo} = this.props;
+    const book.volumeInfo = '';
+    if(this.props.hasOwnProperty('filterBookInfo')){
+      bookInfo = this.props.filterBookInfo.map((volumeInfo, i) =>
+    
+    // const bookInfo = this.props.filterBookInfo.map((info, i) => (
       <Book
         key={i}
-        title={info.volumeInfo.title}
+        title={volumeInfo.title}
         image={
-          "imageLinks" in info.volumeInfo
-            ? info.volumeInfo.imageLinks.thumbnail
+          "imageLinks" in volumeInfo
+            ? volumeInfo.imageLinks.thumbnail
             : ""
         }
         author={
-          "authors" in info.volumeInfo
-            ? `Author(s): ` + info.volumeInfo.authors 
+          "authors" in volumeInfo
+            ? `Author(s): ` + volumeInfo.authors 
             : ""
         }
         price={
-          "listPrice" in info.saleInfo
-            ? `Price: $` + info.saleInfo.listPrice.amount
+          "listPrice" in volumeInfo.saleInfo
+            ? `Price: $` + volumeInfo.saleInfo.listPrice.amount
             : ""
           //info.saleInfo.saleability
         }
-        description={info.volumeInfo.description}
-        preview={info.volumeInfo.previewLink}
+        description={volumeInfo.description}
+        preview={volumeInfo.previewLink}
       />
-    ));
-    console.log(bookInfo, "FilterableList results");
-    return <div className="FilterableList">{bookInfo}</div>;
+    );
+    console.log(book.volumeInfo, "FilterableList results");
+    return <div className="FilterableList">{book.volumeInfo}</div>;
   }
+}
 }

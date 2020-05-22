@@ -6,6 +6,7 @@ class SearchBox extends Component {
     return (
       <div className="SearchBox">
         <input placeholder="Search term" value={this.props.searchTerm}/>
+        <button>Search</button>
       </div>   
     );
   }
