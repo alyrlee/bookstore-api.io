@@ -21,14 +21,15 @@ class App extends Component {
 
 //('https://www.googleapis.com/books/v1/volumes?q={searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM')
 componentDidMount(){
+  let searchEntry = `${this.state.searchEntry}`;  
 const baseUrl =
-"https://www.googleapis.com/books/v1/volumes?q={searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM";
+`https://www.googleapis.com/books/v1/volumes?q=${searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM`;
 let printType = `$printType=${this.state.isPrintType}`;
 let filter =
 this.state.isBookType !== "no-filter"
   ? `$filter=${this.state.isBookType}`
   : "";
-let searchEntry = `${this.state.searchEntry}`;
+
 
 const queryString = `${baseUrl}?q=${searchEntry}&${filter}&${printType}`;
 
