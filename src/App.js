@@ -11,6 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
       books: [],
+      isPrintType: "all",
+      isBookType: "no-filter",
       searchEntry: "",
       showAddForm: false,
       data: null,
@@ -19,19 +21,47 @@ class App extends Component {
     };
 }
 
+
+setPrintSelected(sel) {
+  console.log("Print Selected:", sel);
+  this.setState({
+    isPrintType: sel
+  });
+}
+
+setBookSelected(sel) {
+  console.log(" BOOK selected:", sel);
+  this.setState({
+    isBookType: sel
+  });
+}
+
+searchInput(inp) {
+  console.log("Search entry is: ", inp);
+  this.setState({
+    searchEntry: inp
+  });
+}
+
+handleSubmit(e) {
+  e.preventDefault();
+  console.log("submit handled!");
+}
 //('https://www.googleapis.com/books/v1/volumes?q={searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM')
 componentDidMount(){
-  let searchEntry = `${this.state.searchEntry}`;  
-const baseUrl =
-`https://www.googleapis.com/books/v1/volumes?q=${searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM`;
-let printType = `$printType=${this.state.isPrintType}`;
-let filter =
+let searchEntry = `${this.state.searchBox}`;  
+const baseUrl = 'https://www.googleapis.com/books/v1/volumes/'
+
+
+const key='AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM'
+// `https://www.googleapis.com/books/v1/volumes?q=${searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM`;
+
+let printType = `${this.state.isPrintType}`;
+let filter = 
 this.state.isBookType !== "no-filter"
   ? `$filter=${this.state.isBookType}`
   : "";
-
-
-const queryString = `${baseUrl}?q=${searchEntry}&${filter}&${printType}`;
+const queryString = `${baseUrl}?q=${searchEntry}&${filter}&${printType}&key=${key}`;
 
 console.log(queryString);
 
