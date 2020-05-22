@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import SearchBar from './SearchBar';
 // import FilterableList from './FilterableList';
-import Header from './Header';
+// import Header from './Header';
 // import FilterOptions from './FilterOptions';
 
 class App extends Component {
@@ -11,89 +10,62 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookResults: this.props.starterBookResults,
-      bookFilter: '', 
-      printFilter: '',
-      Book: [],
-      showAddForm: false
+      books: [],
+      searchEntry: "",
+      showAddForm: false,
+      data: null,
+      query: '',
+
     };
+}
+
+//('https://www.googleapis.com/books/v1/volumes?q={searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM')
+componentDidMount(){
+const baseUrl =
+"https://www.googleapis.com/books/v1/volumes?q={searchEntry}&key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM";
+let printType = `$printType=${this.state.isPrintType}`;
+let filter =
+this.state.isBookType !== "no-filter"
+  ? `$filter=${this.state.isBookType}`
+  : "";
+let searchEntry = `${this.state.searchEntry}`;
+
+const queryString = `${baseUrl}?q=${searchEntry}&${filter}&${printType}`;
+
+console.log(queryString);
+
+fetch(queryString)
+.then(response => {
+  if (response.ok) {
+    return response.json();
   }
-
- // https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM
- //const url = 'https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key={yourAPIKey}';
- // const yourAPIKey= 'AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM';
-
-
-//  const baseUrl = 'https://www.googleapis.com/books/v1/volumes/'
-//     const key = 'AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM'
-//     const  = this.formatQuery( baseUrl, searchInput, key );
-
-  componentDidMount() {
-    const url = 'https://www.googleapis.com/books/v1/volumes/';
-    const options = {
-      method: 'GET',
-      headers: {
-      "Authorization": "Bearer AIzaSyAMGQrqEdaJOMug4ThmQqLhVTqoseQaLUM",
-      "Content-Type": "application/json"
-      }
-    }; 
-
-    fetch(url, options)
-      .then(res => {
-        if(!res.ok) {
-          throw new Error('Something went wrong, please try again later.');
-        }
-        return res;
-      })
-   .then(res=> res.json())
-   .then(data => {
-      this.setState({
-        book: data,
-        error: null
-      });
-   })   
-   .catch(err => {
-      this.setState({
-         error: err.message
-      });
-   });
-  }
-
-  handlePrintType = ( printTypeFormEvent ) => {
-    if ( printTypeFormEvent ) {
-      this.setState({
-          printFilter: printTypeFormEvent
-      });
-    } 
-  }
-
-  handleBookType = ( bookTypeFormEvent ) => {
-    if ( bookTypeFormEvent ) {
-      this.setState({
-          bookFilter: bookTypeFormEvent
-      });
-    } 
-  }
+  throw new Error();
+})
+.then(responseJSon => {
+  console.log(responseJSon);
+  this.setState({
+    searchResults: responseJSon.items
+  });
+})
+.catch(e => {
+  console.log(e);
+  this.setState({ error: e.message });
+});
+}
 
 
-  render() {
-    // const book = this.state.showAddForm
-    // ? <bookResults />
-    // : <FilterableList bookResults={this.state.FilterableList}/>; 
-    // // const { bookResults } = this.state; 
- 
+render() {
+  return (
+    <div className="App">
+       <header className="App-header">
+            <h1>Google Book Search</h1>
+          </header>
+      <SearchBar 
+      handleSearchSubmit={ this.handleSearchSubmit }/>    
+      </div>
+);
+}
+}     
 
-    return (
-        <div >
-        <Header />
-        <SearchBar 
-          handleSearchSubmit={ this.handleSearchSubmit }/>
-          {/* {FilterOptions} */}
-        {/* <FilterableList
-          bookResults={ bookResults } /> */}
-        </div>
-      );
-    }
-  }
 
-  export default App; 
+export default App;

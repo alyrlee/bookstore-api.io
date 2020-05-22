@@ -5,7 +5,7 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="SearchBox">
-        <input placeholder="Search term" value={this.props.searchTerm}/>
+        <input placeholder="Search term" value={this.props.searchEntry}/>
         <button>Search</button>
       </div>   
     );
