@@ -5,7 +5,7 @@ import FilterableList from './FilterableList';
 import Header from './Header';
 // import FilterOptions from './FilterOptions';
 // import Book from '/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js'
-import BookList from './bookList'
+// import BookList from './bookList'
 
 
 class App extends Component {
@@ -122,11 +122,11 @@ render() {
         printonChange={sel => this.setPrintSelected(sel)}
         bookonChange={sel => this.setBookSelected(sel)}
         handleSubmit={e => this.handleSubmit(e)}
-        //bookChangeHandler={this.setBookSelected}
+        bookOnChange={this.setBookSelected}
         handleSearchInput={inp => this.searchInput(inp)}
       />
-      <BookList filterBookInfo={this.state.searchResults} />
-      {error}
+      {/* <BookList filterBookInfo={this.state.searchResults} />
+      {error} */}
     </div>
   );
 }
