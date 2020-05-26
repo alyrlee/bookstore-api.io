@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './FilterableList.css';
 import BookType from './bookType';
 import PrintType from './printType';
+import BookList from './bookList';
+// import Book from './Book';
 
 export default class FilterableList extends Component {
   render() {
@@ -40,9 +42,11 @@ return (
         <label htmlFor="bookType">Book Type:</label>
         <BookType
           selectOptions={this.props.selectOptions}
-          bookOnChange={this.props.bookOnChange}
+          bo
+          okOnChange={this.props.bookOnChange}
         />
+        <BookList searchResuls={this.props.searchResuls} />
    </div>
 );
 }
-  }
+}

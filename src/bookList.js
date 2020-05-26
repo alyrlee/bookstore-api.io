@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import Book from "/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js";
+import Book from "./Book";
 
 export default class BookList extends Component {
   render() {
-    const bookInfo = this.props.filterBookInfo.map((info, i) => (
+    
+    const bookInfo = this.book.volumeInfo;
+
+     this.props.filterBookInfo.map((info, i) => (
+      
       <Book
         key={i}
         title={info.volumeInfo.title}

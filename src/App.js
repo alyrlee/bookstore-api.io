@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import FilterableList from './FilterableList';
-import Header from './Header';
+// import Header from './Header';
+// import Display from './Display';
 // import FilterOptions from './FilterOptions';
 // import Book from '/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js'
-// import BookList from './bookList'
+import BookList from './bookList'
 
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       searchEntry: "",
       showAddForm: false,
       data: null,
+      error: null,
       query: '',
 
     };
@@ -110,12 +112,12 @@ render() {
   );
   return (
     <div className="App">
-        <Header />
+        {/* <Header />
    <header className="App-header">
-           <h1>Google Book Search</h1>
-       </header>
-       <SearchBar 
-      handleSearchSubmit={ this.handleSearchSubmit }/>   
+           <h1>Google Book Search</h1> */}
+       {/* </header>  */}
+       {/* <SearchBar 
+      handleSearchSubmit={ this.handleSearchSubmit }/>  */}
       <FilterableList
         // searchResults={searchResults}
         selectOptions={selectOptions}
@@ -124,9 +126,9 @@ render() {
         handleSubmit={e => this.handleSubmit(e)}
         bookOnChange={this.setBookSelected}
         handleSearchInput={inp => this.searchInput(inp)}
-      />
-      {/* <BookList filterBookInfo={this.state.searchResults} />
-      {error} */}
+      /> 
+       <BookList filterBookInfo={this.state.searchResults} />
+      {error}
     </div>
   );
 }
@@ -135,21 +137,6 @@ render() {
 App.defaultProps = {
 searchResults: []
 };
-//   return (
-//     <div className="App">
-//       <Header />
-//        <header className="App-header">
-//             <h1>Google Book Search</h1>
-//           </header>
-//       <SearchBar 
-//       handleSearchSubmit={ this.handleSearchSubmit }/>   
-//       <Book /> 
-//       <BookList />
-//       {/* <bookList filterBookInfo={this.state.searchResults} /> */}
-//       </div>
-// );
-// }
-// }     
 
 
 export default App;

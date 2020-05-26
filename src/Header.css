@@ -3,6 +3,7 @@
     width: 100%;
     height: 150px;
     margin: 0;
+    max-height: fit-content;
 }
 
 h1 {
