@@ -1,13 +1,10 @@
+
 import React, { Component } from "react";
 import Book from "./Book";
 
 export default class BookList extends Component {
-  render() {
-    
-    const bookInfo = this.book.volumeInfo;
 
-     this.props.filterBookInfo.map((info, i) => (
-      
+    <BookList filterBookInfo={this.props.filterBookInfo.map((info, i) => (
       <Book
         key={i}
         title={info.volumeInfo.title}
@@ -34,4 +31,3 @@ export default class BookList extends Component {
     return <div className="BookList">{bookInfo}</div>;
   }
 }
-

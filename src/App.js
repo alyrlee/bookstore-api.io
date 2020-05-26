@@ -127,7 +127,7 @@ render() {
         bookOnChange={this.setBookSelected}
         handleSearchInput={inp => this.searchInput(inp)}
       /> 
-       <BookList filterBookInfo={this.state.searchResults} />
+       <BookList filterBookInfo={this.state.searchResults} /> 
       {error}
     </div>
   );
