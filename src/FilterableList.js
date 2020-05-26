@@ -1,40 +1,48 @@
 import React, { Component } from 'react';
 import './FilterableList.css';
-import Book from './Book';
+import BookType from './bookType';
+import PrintType from './printType';
 
 export default class FilterableList extends Component {
   render() {
-    const {book.volumeInfo} = this.props;
-    const book.volumeInfo = '';
-    if(this.props.hasOwnProperty('filterBookInfo')){
-      bookInfo = this.props.filterBookInfo.map((volumeInfo, i) =>
-    
-    // const bookInfo = this.props.filterBookInfo.map((info, i) => (
-      <Book
-        key={i}
-        title={volumeInfo.title}
-        image={
-          "imageLinks" in volumeInfo
-            ? volumeInfo.imageLinks.thumbnail
-            : ""
-        }
-        author={
-          "authors" in volumeInfo
-            ? `Author(s): ` + volumeInfo.authors 
-            : ""
-        }
-        price={
-          "listPrice" in volumeInfo.saleInfo
-            ? `Price: $` + volumeInfo.saleInfo.listPrice.amount
-            : ""
-          //info.saleInfo.saleability
-        }
-        description={volumeInfo.description}
-        preview={volumeInfo.previewLink}
-      />
-    );
-    console.log(book.volumeInfo, "FilterableList results");
-    return <div className="FilterableList">{book.volumeInfo}</div>;
+      console.log(this.props.searchResuls);
+
+return (
+  <div className="BookSearch">
+    <header className="header">
+    </header>
+}
+
+<form
+          className="googleBookSearch__form"
+          onSubmit={e => this.props.handleSubmit(e)}
+        >
+          <label className="searchL" htmlFor="search">
+            Search:
+          </label>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="henry"
+            onChange={inp => this.props.handleSearchInput(inp.target.value)}
+          />
+
+          <input type="submit" value="Submit" />
+        </form>
+
+        <label htmlFor="printType">Print Type:</label>
+        <PrintType
+          selectOptions={this.props.selectOptions}
+          printOnCHnage={this.props.printOnChange}
+        />
+
+        <label htmlFor="bookType">Book Type:</label>
+        <BookType
+          selectOptions={this.props.selectOptions}
+          bookOnChange={this.props.bookOnChange}
+        />
+   </div>
+);
+}
   }
-}
-}

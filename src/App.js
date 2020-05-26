@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './SearchBar';
-// import FilterableList from './FilterableList';
-// import Header from './Header';
+import FilterableList from './FilterableList';
+import Header from './Header';
 // import FilterOptions from './FilterOptions';
+// import Book from '/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js'
+import BookList from './bookList'
+
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       books: [],
+      items: [],
       isPrintType: "all",
       isBookType: "no-filter",
       searchEntry: "",
@@ -86,17 +91,65 @@ fetch(queryString)
 
 
 render() {
+  const selectOptions = {
+    printSelections: ["all", "books", "magazines"],
+    bookSelections: [
+      "no-filter",
+      "partial",
+      "full",
+      "free-ebooks",
+      "paid-ebooks",
+      "ebooks"
+    ]
+  };
+
+  const error = this.state.error ? (
+    <div className="error">{this.state.error}</div>
+  ) : (
+    ""
+  );
   return (
     <div className="App">
-       <header className="App-header">
-            <h1>Google Book Search</h1>
-          </header>
-      <SearchBar 
-      handleSearchSubmit={ this.handleSearchSubmit }/>    
-      </div>
-);
+        <Header />
+   <header className="App-header">
+           <h1>Google Book Search</h1>
+       </header>
+       <SearchBar 
+      handleSearchSubmit={ this.handleSearchSubmit }/>   
+      <FilterableList
+        // searchResults={searchResults}
+        selectOptions={selectOptions}
+        printonChange={sel => this.setPrintSelected(sel)}
+        bookonChange={sel => this.setBookSelected(sel)}
+        handleSubmit={e => this.handleSubmit(e)}
+        //bookChangeHandler={this.setBookSelected}
+        handleSearchInput={inp => this.searchInput(inp)}
+      />
+      <BookList filterBookInfo={this.state.searchResults} />
+      {error}
+    </div>
+  );
 }
-}     
+}
+
+App.defaultProps = {
+searchResults: []
+};
+//   return (
+//     <div className="App">
+//       <Header />
+//        <header className="App-header">
+//             <h1>Google Book Search</h1>
+//           </header>
+//       <SearchBar 
+//       handleSearchSubmit={ this.handleSearchSubmit }/>   
+//       <Book /> 
+//       <BookList />
+//       {/* <bookList filterBookInfo={this.state.searchResults} /> */}
+//       </div>
+// );
+// }
+// }     
 
 
 export default App;

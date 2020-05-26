@@ -1,15 +1,27 @@
 import React, { Component } from 'react'
-import Type from './Type'
+import Display from './Display';
 
-class BookType extends Component{
+export default class BookType extends Component{
     render(){
    
+  const selectOptions = this.props.selectOptions.bookSelections;
+  const bookOptions = selectOptions.BookType.map((options, i) => (
+   <option value={options} key={i}> 
+    {options}
+  </option>  
+  )); 
+
     return (
         <div>
-          <Type bookTypeOption={this.props.option.value} />
+          <Display 
+          
+          bookOptions={bookOptions}
+          printOnChange={this.bookOnChange}
+          
+          />
         </div>
-    )
+
+    );
   }
 }
 
-export default BookType;

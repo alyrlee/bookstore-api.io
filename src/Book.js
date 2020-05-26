@@ -1,73 +1,31 @@
-import React, { Component } from 'react';
-import './Book.css';
+import React from "react";
 
-class Book extends Component {
-   render() {
-      const { book } = this.props.books;
+export default function Book(props) {
+  return (
+    <div className="book">
+      <div className="book__row">
+        <div className="book__title">
+          <h3>{props.title}</h3>
 
-     
-      let title;
-      let author;
-      let thumbnailUrl;
-      let previewUrl;
-      let snippet;
-      let cost;
+          <img className="book__image" src={props.image} alt={props.title} />
+          <div className="book__info">
+            <p>{props.author}</p>
+            <p>{props.price}</p>
 
-      if ( book.volumeInfo ) {
-        author = book.volumeInfo.authors !== undefined
-            ? book.volumeInfo.authors[0]
-            : 'No authors listed'
-        title = book.volumeInfo.title !== undefined
-            ? book.volumeInfo.title
-            : 'No authors listed';
-        thumbnailUrl = book.volumeInfo.imageLinks.thumbnail !== undefined
-            ? book.volumeInfo.imageLinks.thumbnail
-            : 'No photo';
-        previewUrl = book.volumeInfo.previewLink !== undefined
-            ? book.volumeInfo.previewLink
-            : 'https://books.google.com/';
-
-    } else {
-        author = null;
-        title = null;
-        thumbnailUrl = null;
-        previewUrl = null;
-        snippet = null;
-        cost = null;
-    }
-    if ( book.searchInfo ) {
-        snippet = book.searchInfo.textSnippet !== undefined
-        ? book.searchInfo.textSnippet
-        : null;
-    } else {
-        snippet = null;
-    }
-
-    if ( book.saleInfo ) {
-        cost = book.saleInfo.saleability === 'FOR_SALE' 
-        ? '$' + book.saleInfo.listPrice.amount
-        : null;
-    } else {
-        cost = null;
-    }
-    
-   return (
-
-      <div className="book_container">
-            <a href={ previewUrl } target="blank">
-                <li className="book_li">
-                    <img src={ thumbnailUrl } className="book_image" alt={`The cover of the book titled ${title}`}></img>
-                    <div className="book_info">
-                        <h2 className="book_title">{ title.props }</h2>
-                        <h4 className="book_author">{ author.props }</h4>
-                        <div className="book_cost">{ cost.props }</div>
-                        <p className="book_snippet">{ snippet.props }</p>
-                    </div>
-                </li>
+            <a
+              className="book__preview_link"
+              href={props.preview}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Preview List
             </a>
+            <p>{props.description}</p>
+          </div>
         </div>
-    );
-   }
+      </div>
+      <div className="book__description">{props.description}</div> 
+      <hr />
+    </div>
+  );
 }
-
-export default Book;
