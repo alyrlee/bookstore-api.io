@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Display from './Display';
+import BookDisplay from './BookDisplay';
 
 export default class BookType extends Component{
     render(){
@@ -14,7 +14,7 @@ export default class BookType extends Component{
 
     return (
         <div>
-          <Display 
+        <BookDisplay
           
           bookOptions={bookOptions}
           printOnChange={this.bookOnChange}

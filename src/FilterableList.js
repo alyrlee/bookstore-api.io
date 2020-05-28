@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './FilterableList.css';
 import BookType from './bookType';
 import PrintType from './printType';
-import BookList from './bookList';
+// import BookList from './bookList';
 // import Book from './Book';
 
 export default class FilterableList extends Component {
@@ -11,13 +11,13 @@ export default class FilterableList extends Component {
 
 return (
   <div className="BookSearch">
-    <header className="header">
-    </header>
-}
+    {/* <header className="header">
+    </header> */}
+
 
 <form
-          className="googleBookSearch__form"
-          onSubmit={e => this.props.handleSubmit(e)}
+         className="googleBookSearch__form"
+           onSubmit={e => this.props.handleSubmit(e)}
         >
           <label className="searchL" htmlFor="search">
             Search:
@@ -42,10 +42,9 @@ return (
         <label htmlFor="bookType">Book Type:</label>
         <BookType
           selectOptions={this.props.selectOptions}
-          bo
-          okOnChange={this.props.bookOnChange}
+          bookOnChange={this.props.bookOnChange}
         />
-        <BookList searchResuls={this.props.searchResuls} />
+        {/* <BookList searchResults={this.props.searchResults} /> */}
    </div>
 );
 }
