@@ -12,6 +12,7 @@ class SearchBar extends Component {
 handleSearchInput = ( searchEvent ) => {
     this.setState({
       searchInput: searchEvent.target.value
+      // onChange={inp => this.props.handleSearchInput(inp.target.value)}
     });
 }
   render() {
@@ -21,10 +22,11 @@ handleSearchInput = ( searchEvent ) => {
           <h1>File Uploader</h1>
         </div>
         <div className="SearchBar__controls">
-          <SearchBox searchTerm={this.props.searchTerm} />
+          <SearchBox
+           searchTerm={this.props.searchTerm} 
+           onChange ={this.props.onChange}  />
           {/* <FilterOptions filterOption={this.props.filterOption} /> */}
-          value={this.props.search}
-          onChange={event => this. props.change('search, e.target.calue')}
+
         </div>
       </div>
     );

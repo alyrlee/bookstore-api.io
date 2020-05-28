@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-// import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
 import FilterableList from './FilterableList';
 import Header from './Header';
-// import Display from './Display';
 // import FilterOptions from './FilterOptions';
 // import Book from '/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js'
 // import BookList from './bookList'
@@ -103,7 +102,8 @@ render() {
       "paid-ebooks",
       "ebooks"
     ]
-  };
+  }
+  // ;
 
   const error = this.state.error ? (
     <div className="error">{this.state.error}</div>
@@ -112,12 +112,12 @@ render() {
   );
   return (
     <div className="App">
-      {/* <SearchBar /> */}
-        <Header />
+        <Header /> 
    {/* <header className="App-header">
-            {/* <h1>Google Book Search</h1>   */}
-       {/* </header>   */}
-       {/* <SearchBar  /> */}
+             <h1>Google Book Search</h1>   
+       </header>    */}
+        <SearchBar />
+       
     
       <FilterableList
         // searchResults={searchResults}
@@ -129,7 +129,7 @@ render() {
         handleSearchInput={inp => this.searchInput(inp)}
         handleSearchSubmit={ this.handleSearchSubmit }/> 
        {/* <BookList filterBookInfo={this.state.searchResults} />  */}
-      {error}
+       {error}
     </div>
   );
 }

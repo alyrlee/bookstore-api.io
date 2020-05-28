@@ -15,23 +15,7 @@ return (
     </header> */}
 
 
-<form
-         className="googleBookSearch__form"
-           onSubmit={e => this.props.handleSubmit(e)}
-        >
-          <label className="searchL" htmlFor="search">
-            Search:
-          </label>
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="henry"
-            onChange={inp => this.props.handleSearchInput(inp.target.value)}
-          />
 
-          <input type="submit" value="Submit" />
-        </form>
 
         <label htmlFor="printType">Print Type:</label>
         <PrintType
