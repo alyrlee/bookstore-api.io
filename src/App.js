@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './SearchBar';
-import FilterableList from './FilterableList';
-import Header from './Header';
+// import FilterableList from './FilterableList';
+// import Header from './Header';
 // import FilterOptions from './FilterOptions';
 // import Book from '/Users/ashleylee/Desktop/THINKFUL/Projects/bookstore-api.io/src/Book.js'
 // import BookList from './bookList'
@@ -112,14 +112,14 @@ render() {
   );
   return (
     <div className="App">
-        <Header /> 
+        {/* <Header />  */}
    {/* <header className="App-header">
              <h1>Google Book Search</h1>   
        </header>    */}
-        <SearchBar />
+       <SearchBar /> 
        
     
-      <FilterableList
+      {/* <FilterableList
         // searchResults={searchResults}
         selectOptions={selectOptions}
         printonChange={sel => this.setPrintSelected(sel)}
@@ -127,9 +127,11 @@ render() {
         handleSubmit={e => this.handleSubmit(e)}
         bookOnChange={this.setBookSelected}
         handleSearchInput={inp => this.searchInput(inp)}
-        handleSearchSubmit={ this.handleSearchSubmit }/> 
+        handleSearchSubmit={ this.handleSearchSubmit }/>  */}
        {/* <BookList filterBookInfo={this.state.searchResults} />  */}
        {error}
+       {/* <BookList /> */}
+
     </div>
   );
 }

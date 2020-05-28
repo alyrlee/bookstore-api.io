@@ -1,44 +1,52 @@
+import React, { Component } from "react";
 
-// import React from "react";
-// import Book from "./Book";
-// // import BookDisplay from '.BookDisplay/'
+import Book from './Book'
 
-// export default function BookList(props) {
-// // render(){ 
-//   return (
-// const BookInfo =  (props) => {
-//   const { bookInfo } = props.book.volumeInfo;
-//   // const { info, volumeInfo } = props.info;
-//   this.props.filterBookInfo.map((info, i) => (
-//         <Book
-//           key={i}
-//           title={info.volumeInfo.title}
-//           image={
-//             "imageLinks" in info.volumeInfo
-//               ? info.volumeInfo.imageLinks.thumbnail
-//               : ""
-//           }
-//           author={
-//             "authors" in info.volumeInfo
-//               ? `Author(s): ` + info.volumeInfo.authors 
-//               : ""
-//           }
-//           price={
-//             "listPrice" in info.saleInfo
-//               ? `Price: $` + info.saleInfo.listPrice.amount
-//               : ""
-//           }
-//           description={info.volumeInfo.description}
-//           preview={info.volumeInfo.previewLink}
-//           //onClick hideDeatils()
-//         />
-//       ));
-         
-//       console.log(bookInfo, "bookList results");
-//       return <div className="BookList">{bookInfo}</div>;
-//     }
-//   }};
+class BookList extends Component {
 
-//   export default BookList;
+    constructor(props) {
+        super(props);
+
+   this.state = {    
+
+    books: []
+
+    };
+}
+
+    render() {
+      const bookInfo = this.props.filterBookInfo.map((info, i) => (
+        <Book
+          key={i}
+          title={info.volumeInfo.title}
+          image={
+            "imageLinks" in info.volumeInfo
+              ? info.volumeInfo.imageLinks.thumbnail
+              : ""
+          }
+          author={
+            "authors" in info.volumeInfo
+              ? `Author(s): ` + info.volumeInfo.authors 
+              : ""
+          }
+          price={
+            "listPrice" in info.saleInfo
+              ? `Price: $` + info.saleInfo.listPrice.amount
+              : ""
+          }
+          description={info.volumeInfo.description}
+          preview={info.volumeInfo.previewLink}
+        />
+      ));
+      console.log(bookInfo, "bookList results");
+      return <div className="BookList">{bookInfo}</div>;
+    }
+}
   
+// BookList.defaultProps = {
+//     searchResults: [],
+//     bookInfo: [],
+//     BookInfo: []
+//     };
 
+  export default BookList;
